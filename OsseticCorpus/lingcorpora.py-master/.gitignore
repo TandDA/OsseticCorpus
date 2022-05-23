@@ -1,0 +1,24 @@
+*.idea
+
+*.pyc
+
+*.DS_Store
+
+try.py
+
+*.csv
+
+*.cfg
+
+czh_corpus.py
+
+ava_corpus.py
+
+.coverage
+
+dist
+*.rar
+
+#Jupyter Notebook stuff
+.ipynb_checkpoints/
+docs/.ipynb_checkpoints/
