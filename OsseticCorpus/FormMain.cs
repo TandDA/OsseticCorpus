@@ -113,7 +113,7 @@ namespace OsseticCorpus
             if (lemma != null && tags != null)
             {
                 int tagsCount = tags.Length;
-                Label[] stickerLines = new Label[tagsCount + 2];// + lemma,
+                Label[] stickerLines = new Label[tagsCount + 2];// + lemma
                 stickerLines[0] = CreateLine($"Лемма: {lemma}", 0);
                 stickerLines[1] = CreateLine("Тэги:", 1);
                 for (int i = 0; i < tagsCount; i++)
