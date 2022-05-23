@@ -138,20 +138,58 @@ namespace OsseticCorpus
                 this.TopMost = true;
             }
         }
-        public string[] CheckModules() // bs4 requests lxml tqdm
+        string RunCmd(string command)
         {
-            //Process p = new Process();
-            //p.StartInfo = new ProcessStartInfo("cmd", "pip list")
-            //{
-            //    RedirectStandardOutput = true,
-            //    UseShellExecute = false,
-            //    CreateNoWindow = true,
-            //    RedirectStandardInput = true
-            //};
-            //p.Start();
-            //string a = p.StandardOutput.ReadToEnd();
-            //p.WaitForExit();
-            return null;
+            Process p = new Process();
+            p.StartInfo = new ProcessStartInfo("cmd", $"/c {command}")
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardInput = true
+            };
+            p.Start();
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            return output;
+        }
+        public void CheckModules() // bs4 requests lxml tqdm
+        {
+            bool bs4 = false, requests = false, lxml = false, tqdm = false, lingcorpora = false;
+            string[] modules = RunCmd("pip list").Split('\r');
+            foreach (var item in modules)
+            {
+                string[] module = item.Split(' ');
+                switch(module[0])
+                {
+                    case "\\nbs4":
+                        bs4 = true;
+                        break;
+                    case "\\nrequests":
+                        requests = true;
+                        break;
+                    case "\\nlxml":
+                        lxml = true;
+                        break;
+                    case "\\ntqdm":
+                        tqdm = true;
+                        break;
+                    case "\\nlingcorpora":
+                        lingcorpora = true;
+                        break;
+                }
+            }
+            if (!bs4)
+                RunCmd("pip install bs4");
+            if (!requests)
+                RunCmd("pip install requests");
+            if (!lxml)
+                RunCmd("pip install lxml");
+            if (!tqdm)
+                RunCmd("pip install tqdm");
+            if (!lingcorpora)
+                RunCmd("pip install lingcorpora");
+
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
