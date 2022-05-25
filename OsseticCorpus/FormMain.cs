@@ -23,11 +23,10 @@ namespace OsseticCorpus
         public FormMain()
         {
             InitializeComponent();
-            vScrollBar.Visible = false;
             WriteDictionary();
             CheckModules();
         }
-        private void Run_Cmd()
+        private void RunPython()
         {
             if (string.IsNullOrEmpty(textBoxWord.Text))
             {
@@ -83,17 +82,11 @@ namespace OsseticCorpus
                 else tags[i] = "Неопознаный тэг";
             }
         }
-
-        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
-        {
-            
-        }
-
         private void textBoxWord_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Run_Cmd();
+                RunPython();
                 AddInf(lemma,tags);
             }
         }
@@ -104,7 +97,7 @@ namespace OsseticCorpus
             newL.Text = text;
             newL.Location = new Point(1, 50 + 20 * mod);
             newL.BackColor = Color.SkyBlue;
-            newL.Size = new System.Drawing.Size(199, 20);
+            newL.Size = new System.Drawing.Size(200, 20);
             Controls.Add(newL);
             return newL;
         }
@@ -194,6 +187,13 @@ namespace OsseticCorpus
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            base.Capture = false;
+            Message m = Message.Create(base.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref m);
         }
     }
 }

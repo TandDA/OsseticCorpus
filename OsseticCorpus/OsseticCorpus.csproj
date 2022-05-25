@@ -866,11 +866,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="list.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\razlinovka-1652890888518.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2806,6 +2801,8 @@
     <Content Include="lingcorpora.py-master\venv\Scripts\wheel.exe" />
     <Content Include="lingcorpora.py-master\venv\Scripts\wheel3.8.exe" />
     <Content Include="lingcorpora.py-master\venv\Scripts\wheel3.exe" />
+    <None Include="Resources\CrossRed.bmp" />
+    <None Include="Resources\CrossRed.png" />
     <Content Include="tags.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
