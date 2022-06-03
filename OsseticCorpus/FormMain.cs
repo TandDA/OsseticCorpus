@@ -16,6 +16,7 @@ namespace OsseticCorpus
     public partial class FormMain : Form
     {
         Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
+        List<Label> stickerLines;
         string[] tags;
         string lemma;
         bool PinClip = false;
@@ -106,12 +107,23 @@ namespace OsseticCorpus
             if (lemma != null && tags != null)
             {
                 int tagsCount = tags.Length;
-                Label[] stickerLines = new Label[tagsCount + 2];// + lemma
-                stickerLines[0] = CreateLine($"Лемма: {lemma}", 0);
-                stickerLines[1] = CreateLine("Тэги:", 1);
-                for (int i = 0; i < tagsCount; i++)
+                if (stickerLines != null)
                 {
-                    stickerLines[i + 2] = CreateLine($"-{tags[i]}", i + 2);
+                    stickerLines[0].Text = $"Лемма: {lemma}";
+                    for (int i = 2; i < stickerLines.Count; i++)
+                    {
+                        stickerLines[i].Text = i < tagsCount+2 ? $"-{tags[i-2]}" : string.Empty;
+                    }
+                }
+                else
+                {
+                    stickerLines = new List<Label>();
+                    stickerLines.Add(CreateLine($"Лемма: {lemma}", 0));
+                    stickerLines.Add(CreateLine("Тэги:", 1));
+                    for (int i = 0; i < tagsCount; i++)
+                    {
+                        stickerLines.Add(CreateLine($"-{tags[i]}", i + 2));
+                    }
                 }
             }
         }

@@ -42,7 +42,7 @@ namespace OsseticCorpus
             this.textBoxWord.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxWord.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxWord.Location = new System.Drawing.Point(32, 34);
-            this.textBoxWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxWord.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxWord.Name = "textBoxWord";
             this.textBoxWord.Size = new System.Drawing.Size(133, 34);
             this.textBoxWord.TabIndex = 2;
@@ -50,6 +50,7 @@ namespace OsseticCorpus
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::OsseticCorpus.Properties.Resources.CrossRed;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(204, 1);
@@ -63,7 +64,7 @@ namespace OsseticCorpus
             // 
             // pictureBoxPinClip
             // 
-            this.pictureBoxPinClip.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBoxPinClip.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPinClip.Image = global::OsseticCorpus.Properties.Resources.PinClipBlack;
             this.pictureBoxPinClip.Location = new System.Drawing.Point(1, 1);
             this.pictureBoxPinClip.Margin = new System.Windows.Forms.Padding(4);
@@ -84,7 +85,7 @@ namespace OsseticCorpus
             this.Controls.Add(this.pictureBoxPinClip);
             this.Controls.Add(this.textBoxWord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxWord_KeyDown);
