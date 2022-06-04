@@ -16,7 +16,7 @@ namespace OsseticCorpus
     public partial class FormMain : Form
     {
         Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
-        List<Label> stickerLines;
+        Label[] stickerLines;
         string[] tags;
         string lemma;
         bool PinClip = false;
@@ -26,6 +26,7 @@ namespace OsseticCorpus
             InitializeComponent();
             WriteDictionary();
             CheckModules();
+            stickerLines = new Label[]{ label1,label2, label3, label4, label5, label6, label7, label8, label9 };
         }
         private void RunPython()
         {
@@ -38,18 +39,18 @@ namespace OsseticCorpus
             string currPath = Directory.GetCurrentDirectory();
             string fileName = currPath + "\\lingcorpora.py-master\\FindWord.py";
 
-            Process p = new Process();
-            p.StartInfo = new ProcessStartInfo("python", fileName)
+            Process proc = new Process();
+            proc.StartInfo = new ProcessStartInfo("python", fileName)
             {
-                RedirectStandardOutput = true,
+                RedirectStandardOutput = true, // Перехватывает текстовые выходные данные от запущенного приложения
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 RedirectStandardInput = true
             };
-            p.Start();
-            p.StandardInput.WriteLine(textBoxWord.Text);
-            string[] output = p?.StandardOutput.ReadLine()?.Split(' ');
-            p.WaitForExit();
+            proc.Start();
+            proc.StandardInput.WriteLine(textBoxWord.Text);
+            string[] output = proc.StandardOutput.ReadLine()?.Split(' ');
+            proc.WaitForExit();
             if (output != null)
             {
                 lemma = output[0];
@@ -91,39 +92,16 @@ namespace OsseticCorpus
                 AddInf(lemma,tags);
             }
         }
-        public Label CreateLine(string text,int mod)
-        {
-            Label newL = new Label();
-            newL.Font = new Font("Gabriola", 12);
-            newL.Text = text;
-            newL.Location = new Point(1, 50 + 20 * mod);
-            newL.BackColor = Color.SkyBlue;
-            newL.Size = new System.Drawing.Size(200, 20);
-            Controls.Add(newL);
-            return newL;
-        }
         public void AddInf(string lemma, string[] tags)
         {
             if (lemma != null && tags != null)
             {
                 int tagsCount = tags.Length;
-                if (stickerLines != null)
+                stickerLines[0].Text = $"Лемма: {lemma}";
+                stickerLines[1].Text = $"Тэги:";
+                for (int i = 2; i < stickerLines.Length; i++)
                 {
-                    stickerLines[0].Text = $"Лемма: {lemma}";
-                    for (int i = 2; i < stickerLines.Count; i++)
-                    {
-                        stickerLines[i].Text = i < tagsCount+2 ? $"-{tags[i-2]}" : string.Empty;
-                    }
-                }
-                else
-                {
-                    stickerLines = new List<Label>();
-                    stickerLines.Add(CreateLine($"Лемма: {lemma}", 0));
-                    stickerLines.Add(CreateLine("Тэги:", 1));
-                    for (int i = 0; i < tagsCount; i++)
-                    {
-                        stickerLines.Add(CreateLine($"-{tags[i]}", i + 2));
-                    }
+                    stickerLines[i].Text = i < tagsCount+2 ? $"-{tags[i-2]}" : string.Empty;
                 }
             }
         }
