@@ -2803,6 +2803,12 @@
     <Content Include="lingcorpora.py-master\venv\Scripts\wheel3.exe" />
     <None Include="Resources\CrossRed.bmp" />
     <None Include="Resources\CrossRed.png" />
+    <None Include="Resources\image-327244.png" />
+    <None Include="Resources\kisspng-red-x-x-mark-computer-icons-clip-art-red-x-png-5ab191060b46d7.3400347915215864380462.jpg" />
+    <None Include="Resources\123.png" />
+    <None Include="Resources\ColorPin.png" />
+    <None Include="Resources\ColorPin1.png" />
+    <None Include="Resources\BlackPin.png" />
     <Content Include="tags.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

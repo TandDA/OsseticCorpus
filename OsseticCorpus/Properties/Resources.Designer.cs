@@ -63,9 +63,29 @@ namespace OsseticCorpus.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CrossRed {
+        internal static System.Drawing.Bitmap _123 {
             get {
-                object obj = ResourceManager.GetObject("CrossRed", resourceCulture);
+                object obj = ResourceManager.GetObject("123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BlackPin {
+            get {
+                object obj = ResourceManager.GetObject("BlackPin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ColorPin {
+            get {
+                object obj = ResourceManager.GetObject("ColorPin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,36 +106,6 @@ namespace OsseticCorpus.Properties {
         internal static System.Drawing.Bitmap PinClipColor {
             get {
                 object obj = ResourceManager.GetObject("PinClipColor", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap razlinovka_1652890888518 {
-            get {
-                object obj = ResourceManager.GetObject("razlinovka-1652890888518", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap razlinovka_16528908885181 {
-            get {
-                object obj = ResourceManager.GetObject("razlinovka-16528908885181", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap X {
-            get {
-                object obj = ResourceManager.GetObject("X", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

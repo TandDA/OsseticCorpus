@@ -24,6 +24,7 @@ namespace OsseticCorpus
         public FormMain()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             WriteDictionary();
             CheckModules();
             stickerLines = new Label[]{ label1,label2, label3, label4, label5, label6, label7, label8, label9 };
@@ -97,11 +98,12 @@ namespace OsseticCorpus
             if (lemma != null && tags != null)
             {
                 int tagsCount = tags.Length;
-                stickerLines[0].Text = $"Лемма: {lemma}";
-                stickerLines[1].Text = $"Тэги:";
-                for (int i = 2; i < stickerLines.Length; i++)
+                stickerLines[0].Text = $"Начальная форма:";
+                stickerLines[1].Text = lemma;
+                stickerLines[2].Text = $"Тэги:";
+                for (int i = 3; i < stickerLines.Length; i++)
                 {
-                    stickerLines[i].Text = i < tagsCount+2 ? $"-{tags[i-2]}" : string.Empty;
+                    stickerLines[i].Text = i < tagsCount+3 ? $"-{tags[i-3]}" : string.Empty;
                 }
             }
         }
@@ -110,30 +112,30 @@ namespace OsseticCorpus
         {
             if (PinClip)
             {
-                pictureBoxPinClip.Image = Resources.PinClipBlack;
+                pictureBoxPinClip.Image = Resources.BlackPin;
                 PinClip = !PinClip;
                 this.TopMost = false;
             }
             else
             {
-                pictureBoxPinClip.Image = Resources.PinClipColor;
+                pictureBoxPinClip.Image = Resources.ColorPin;
                 PinClip = !PinClip;
                 this.TopMost = true;
             }
         }
         string RunCmd(string command)
         {
-            Process p = new Process();
-            p.StartInfo = new ProcessStartInfo("cmd", $"/c {command}")
+            Process proc = new Process();
+            proc.StartInfo = new ProcessStartInfo("cmd", $"/c {command}")
             {
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 RedirectStandardInput = true
             };
-            p.Start();
-            string output = p.StandardOutput.ReadToEnd();
-            p.WaitForExit();
+            proc.Start();
+            string output = proc.StandardOutput.ReadToEnd();
+            proc.WaitForExit();
             return output;
         }
         public void CheckModules() // bs4 requests lxml tqdm
